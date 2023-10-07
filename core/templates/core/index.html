@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Пробное задание</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to right, green, rgb(255, 170, 0));
+        }
+
+        h1 {
+            animation: fadeIn 2s ease-in-out;
+            font-family: 'Roboto', sans-serif; 
+            font-size: 40px;  
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .centered-text {
+            display: block;
+            text-align: center;
+            font-size: 18px;
+        }
+
+
+        #skills {
+            display: none;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #upload {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Пробное задание</h1>
+    
+    <button id="toggleSkills">⬇️</button>
+
+    <div id="skills">
+        <span class="centered-text">Скиллы:</span>
+        <ul>
+            <li>python</li>
+            <li>использование Django</li>
+            <li>Знание html/css</li>
+            <li>Студент ВОЕНМЕХА факультта СПО</li>
+        </ul>
+    </div>
+    
+    <div id="fileupload">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Загрузить файл</button>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById("toggleSkills").addEventListener("click", function() {
+            var skillsDiv = document.getElementById("skills");
+            if (skillsDiv.style.display === "none") {
+                skillsDiv.style.display = "block";
+            } else {
+                skillsDiv.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
